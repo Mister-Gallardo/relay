@@ -1,0 +1,234 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import '@fontsource-variable/roboto';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+:root {
+  color-scheme: light;
+
+  --surface: #eceef2;
+  --panel: #ffffff;
+  --panel-blur: rgb(255 255 255 / 0.82);
+  --card: #f1f2f5;
+  --card-hover: #e8eaef;
+  --card-selected: #e3eefe;
+  --float: #ffffff;
+  --writebar: #ffffff;
+
+  --fg: #060708;
+  --fg-secondary: rgb(6 7 8 / 0.8);
+  --fg-tertiary: rgb(6 7 8 / 0.56);
+  --fg-mute: rgb(6 7 8 / 0.4);
+
+  --accent: #007aff;
+  --accent-hover: #2b8fff;
+  --accent-pressed: #006ee5;
+  --accent-soft: rgb(0 122 255 / 0.12);
+  --accent-fg: #ffffff;
+
+  --positive: #1fa83a;
+  --negative: #d63b52;
+  --attention: #e8a400;
+
+  --divider: rgb(6 7 8 / 0.08);
+  --stroke: rgb(6 7 8 / 0.12);
+  --input: rgb(9 9 9 / 0.06);
+  --ring: rgb(0 122 255 / 0.45);
+
+  --ground: #8ec5ea;
+  --ground-gradient: linear-gradient(160deg, #9ad7d8 0%, #85bff9 100%);
+  --pattern: rgb(32 80 157 / 0.2);
+
+  --bubble-in: #ffffff;
+  --bubble-in-fg: #060708;
+  --bubble-in-meta: rgb(6 7 8 / 0.45);
+  --bubble-out: #d9ecff;
+  --bubble-out-fg: #060708;
+  --bubble-out-meta: rgb(0 74 160 / 0.6);
+  --bubble-out-check: #007aff;
+  --system-pill: rgb(255 255 255 / 0.72);
+  --system-pill-fg: rgb(6 7 8 / 0.72);
+
+  --shadow-float: 0 8px 28px rgb(16 24 40 / 0.14), 0 1px 3px rgb(16 24 40 / 0.08);
+  --shadow-bubble: 0 1px 1px rgb(16 24 40 / 0.08);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --surface: #0f0f12;
+  --panel: #17181c;
+  --panel-blur: rgb(23 24 28 / 0.84);
+  --card: #25262d;
+  --card-hover: rgb(255 255 255 / 0.05);
+  --card-selected: #2c2d37;
+  --float: #20222b;
+  --writebar: #1e1f24;
+
+  --fg: #ffffff;
+  --fg-secondary: rgb(255 255 255 / 0.8);
+  --fg-tertiary: rgb(255 255 255 / 0.64);
+  --fg-mute: rgb(255 255 255 / 0.4);
+
+  --accent: #007aff;
+  --accent-hover: #479fff;
+  --accent-pressed: #006be0;
+  --accent-soft: rgb(0 122 255 / 0.16);
+  --accent-fg: #ffffff;
+
+  --positive: #2bc644;
+  --negative: #ef5a70;
+  --attention: #ffd60a;
+
+  --divider: rgb(255 255 255 / 0.08);
+  --stroke: rgb(255 255 255 / 0.12);
+  --input: rgb(255 255 255 / 0.07);
+  --ring: rgb(71 159 255 / 0.55);
+
+  --ground: #141414;
+  --ground-gradient: linear-gradient(160deg, #141416 0%, #121318 100%);
+  --pattern: rgb(124 128 255 / 0.1);
+
+  --bubble-in: #25262d;
+  --bubble-in-fg: #ffffff;
+  --bubble-in-meta: rgb(255 255 255 / 0.45);
+  --bubble-out: #1f5fd6;
+  --bubble-out-fg: #ffffff;
+  --bubble-out-meta: rgb(255 255 255 / 0.62);
+  --bubble-out-check: #ffffff;
+  --system-pill: rgb(55 58 78 / 0.64);
+  --system-pill-fg: rgb(255 255 255 / 0.88);
+
+  --shadow-float: 0 12px 32px rgb(0 0 0 / 0.45), 0 0 0 1px rgb(255 255 255 / 0.06);
+  --shadow-bubble: none;
+}
+
+@theme inline {
+  --font-sans: 'Roboto Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  --color-surface: var(--surface);
+  --color-panel: var(--panel);
+  --color-panel-blur: var(--panel-blur);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-card-selected: var(--card-selected);
+  --color-float: var(--float);
+  --color-writebar: var(--writebar);
+
+  --color-fg: var(--fg);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-tertiary: var(--fg-tertiary);
+  --color-fg-mute: var(--fg-mute);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-pressed: var(--accent-pressed);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+  --color-attention: var(--attention);
+
+  --color-divider: var(--divider);
+  --color-stroke: var(--stroke);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-bubble-in: var(--bubble-in);
+  --color-bubble-in-fg: var(--bubble-in-fg);
+  --color-bubble-in-meta: var(--bubble-in-meta);
+  --color-bubble-out: var(--bubble-out);
+  --color-bubble-out-fg: var(--bubble-out-fg);
+  --color-bubble-out-meta: var(--bubble-out-meta);
+  --color-bubble-out-check: var(--bubble-out-check);
+  --color-system-pill: var(--system-pill);
+  --color-system-pill-fg: var(--system-pill-fg);
+
+  --shadow-float: var(--shadow-float);
+  --shadow-bubble: var(--shadow-bubble);
+
+  --text-title: 17px;
+  --text-title--line-height: 24px;
+  --text-body: 16px;
+  --text-body--line-height: 20px;
+  --text-detail: 15px;
+  --text-detail--line-height: 20px;
+  --text-description: 13px;
+  --text-description--line-height: 16px;
+  --text-label: 12px;
+  --text-label--line-height: 16px;
+
+  --animate-bubble-in: bubble-in 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  --animate-pulse-dot: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+@keyframes pulse-dot {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-surface font-sans text-fg antialiased;
+    font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background: rgb(0 122 255 / 0.3);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--stroke) transparent;
+  }
+}
+
+@layer components {
+  .chat-ground {
+    background-color: var(--ground);
+    background-image: var(--ground-gradient);
+  }
+
+  .chat-ground::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--pattern);
+    mask-image: url('../assets/doodles.svg');
+    mask-size: 420px 420px;
+    mask-repeat: repeat;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
